@@ -31,7 +31,13 @@ public abstract class Class {
     public Class() {
     }
 
-    protected ClassType ClasType;
-    protected RacialType RacialType;
-    protected ArrayList<String> RacialSkills;
+    public Class(ClassType clasType, Wow.Domain.RacialType racialType, ArrayList<String> racialSkills) {
+        ClasType = clasType;
+        RacialType = racialType;
+        RacialSkills = racialSkills;
+    }
+
+    public ClassType ClasType;
+    public RacialType RacialType;
+    public ArrayList<String> RacialSkills;
 }
