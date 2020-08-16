@@ -28,6 +28,9 @@ public abstract class Class {
         RacialSkills = racialSkills;
     }
 
+    public Class() {
+    }
+
     protected ClassType ClasType;
     protected RacialType RacialType;
     protected ArrayList<String> RacialSkills;
