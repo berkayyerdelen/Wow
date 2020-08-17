@@ -24,4 +24,15 @@ public class Priest extends Character {
         }
         Mana -= resurectionCost;
     }
+    public int DrinkMana(double manaDrink) throws InCombatException, InterruptedException {
+        if (IsInCombat) throw new InCombatException("You're in Combat");
+        var currentSpan = System.currentTimeMillis();
+        var perTickRegen = manaDrink/30;
+        for (int i = 0; i <30; i++) {
+
+            Thread.sleep(1000);
+            Mana+=perTickRegen;
+        }
+        return (int) (System.currentTimeMillis()-currentSpan)/1000;
+    }
 }

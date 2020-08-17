@@ -15,10 +15,9 @@ public class PriestTest {
             {
                 IsInCombat = true;
                 Mana=10000;
-
             }
         };
-        Throwable exception = assertThrows(InCombatException.class, ()-> {aziel.Resuraction(5000);});
+        Throwable exception = assertThrows(InCombatException.class, ()-> aziel.Resuraction(5000));
         assertEquals("You're in Combat",exception.getMessage());
     }
     @Test
@@ -29,7 +28,19 @@ public class PriestTest {
                 Mana=500;
             }
         };
-        Throwable exception = assertThrows(NotEnoughManaException.class, ()-> {aziel.Resuraction(1000);});
+        Throwable exception = assertThrows(NotEnoughManaException.class, ()-> aziel.Resuraction(1000));
         assertEquals("You don't have enough Mana!",exception.getMessage());
+    }
+    @Test
+    public void Should_Drink_Mana() throws InCombatException, InterruptedException {
+        var aziel = new Priest(){
+            {
+                IsInCombat = false;
+                Mana=0;
+            }
+        };
+        var timeSpan =aziel.DrinkMana(7500.0);
+        assertEquals(30,timeSpan);
+        assertEquals(7500,aziel.getMana());
     }
 }
